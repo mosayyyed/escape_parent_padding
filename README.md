@@ -23,7 +23,7 @@ In your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  escape_parent_padding: ^1.0.1
+  escape_parent_padding: ^1.0.2
 ```
 
 Then run:
