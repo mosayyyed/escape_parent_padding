@@ -2,88 +2,114 @@
 
 A lightweight Flutter widget that allows child widgets to visually escape the padding applied by a parent widget. Useful when you want specific widgets (like a horizontally scrolling `ListView`) to ignore parent padding and span the full screen width.
 
-## ✨ Features
+## 🎥 Demo
 
-- Escape parent padding without layout hacks.
-- Use `EscapablePadding.lite` for simple use cases.
-- Use `EscapablePadding` with multiple children and custom layouts.
-- Skip padding for specific children using the `Escaped` widget.
+Here’s how `EscapablePadding` works in action:
 
-## 🚀 Getting started
+<details>
+  <summary>Before EscapablePadding</summary>
 
-Add the package to your `pubspec.yaml`:
+  [![Before video](https://img.shields.io/badge/Video-Before-red)](example/screenshots/escapable_padding_before.webm)
+
+</details>
+
+<details>
+  <summary>After EscapablePadding</summary>
+
+  [![After video](https://img.shields.io/badge/Video-After-green)](example/screenshots/escapable_padding_after.webm)
+
+</details>## ✨ Features
+
+- 🧩 Escape parent padding without layout hacks.
+- 🪄 Use `EscapablePadding.lite` for simple one-child use cases.
+- 🎯 Use `EscapablePadding` with multiple children and custom layouts.
+- 🧱 Skip padding for specific children using the `Escaped` widget.
+
+## 🚀 Getting Started
+
+### 1. Add the dependency
+
+In your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  escape_parent_padding: ^0.0.1
+  escape_parent_padding: ^0.0.3
 ```
-Then, run:
 
-```sh
+Then run:
+
+```bash
 flutter pub get
 ```
 
-##  Usage
-
-Escapable Padding with Multiple Children
-Use the EscapablePadding widget to apply padding to children while allowing specific widgets to escape it using the Escaped widget.
-
-```dart 
-import 'package:flutter/widgets.dart';
-import 'package:escape_parent_padding/escape_parent_padding.dart';
-
-class Example extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return EscapablePadding(
-      padding: const EdgeInsets.all(16.0),
-      children: [
-        Text('This text is padded.'),
-        Escaped(
-          child: Text('This text escapes the padding.'),
-        ),
-      ],
-      builder: (context, children) => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: children,
-      ),
-    );
-  }
-}
-```
-
-Lite Mode for Single Child
+### 2. Import the package
 
 ```dart
-import 'package:flutter/widgets.dart';
 import 'package:escape_parent_padding/escape_parent_padding.dart';
-
-class LiteExample extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return EscapablePadding.lite(
-      height: 100.0,
-      child: Text('This text overflows the parent padding.'),
-    );
-  }
-}
 ```
 
-##  Usage
+## 📦 Usage
 
-For a complete example, check the /example folder in the repository.
+### 🔹 Escapable Padding (Multiple Children)
 
+Use this when you want to apply padding to all children **except** specific ones.
 
-##  Additional Information
+```dart
+EscapablePadding(
+  padding: const EdgeInsets.all(16),
+  children: [
+    const Text('Padded Item 1'),
+    Escaped(
+      child: Container(
+        color: Colors.red,
+        padding: const EdgeInsets.all(8),
+        child: const Text('I am not padded'),
+      ),
+    ),
+    const Text('Padded Item 2'),
+  ],
+  builder: (context, children) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: children,
+  ),
+)
+```
 
-Developed with simplicity and performance in mind.
+### 🔸 Lite Mode (Single Escaped Child)
 
-Contributions and issues are welcome on the GitHub repository.
+Use this when you want just **one child** to escape horizontal padding.
 
-##  Contributing
+```dart
+Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 24),
+  child: EscapablePadding.lite(
+    height: 100,
+    child: Container(
+      color: Colors.blue,
+      width: 500,
+      alignment: Alignment.center,
+      child: const Text('I escape the parent padding!'),
+    ),
+  ),
+)
+```
 
-Contributions are welcome! If you encounter any issues or have feature requests, please file them on the GitHub issues page.
+## 📁 Example
 
-##  License
+For a full working sample, see the [example/](example/) folder.
 
-This project is licensed under the MIT License. See the LICENSE file for details. 
+---
+
+## 📌 Additional Information
+
+- Built for simplicity and clean layouts.
+- Works well inside `Column`, `ListView`, and other layout widgets.
+- Lightweight with no dependencies.
+
+## 🤝 Contributing
+
+Contributions are welcome! If you find a bug or want a feature, open an issue or PR on GitHub.
+
+## 📄 License
+
+MIT License. See the LICENSE file for more info.

@@ -29,49 +29,51 @@ class EscapeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Escape Parent Padding')),
-      body: SingleChildScrollView(
-        child: EscapablePadding(
-          padding: const EdgeInsets.all(20),
-          builder: (context, children) => Column(children: [...children]),
-          children: [
-            Container(
+      body: EscapablePadding(
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 32),
+        builder: (context, children) => ListView(children: [...children]),
+        children: [
+          Container(
+            height: 200,
+            color: Colors.pinkAccent,
+            child: const Center(child: Text('Container')),
+          ),
+          Escaped(
+            child: SizedBox(
               height: 200,
-              color: Colors.green,
-              child: const Center(child: Text('Container')),
-            ),
-            Escaped(
-              child: Container(
-                height: 200,
-                color: Colors.yellow,
-                child: const Center(child: Text('Escaped Container')),
+              child: ListView.separated(
+                itemCount: 10,
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 32),
+                itemBuilder:
+                    (context, index) => Container(
+                      height: 200,
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 12,
+                        horizontal: 32,
+                      ),
+                      color: Colors.indigo,
+                      child: Center(
+                        child: Text('Escaped ListView Item $index'),
+                      ),
+                    ),
+                separatorBuilder: (context, index) => const SizedBox(width: 10),
               ),
             ),
-            Container(
+          ),
+          Container(
+            height: 200,
+            color: Colors.pinkAccent,
+            child: const Center(child: Text('Container')),
+          ),
+          Escaped(
+            child: Container(
               height: 200,
-              color: Colors.green,
-              child: const Center(child: Text('Container')),
+              color: Colors.indigo,
+              child: const Center(child: Text('Escaped Container')),
             ),
-            Escaped(
-              child: Container(
-                height: 200,
-                color: Colors.yellow,
-                child: const Center(child: Text('Escaped Container')),
-              ),
-            ),
-            Container(
-              height: 200,
-              color: Colors.green,
-              child: const Center(child: Text('Container')),
-            ),
-            Escaped(
-              child: Container(
-                height: 200,
-                color: Colors.yellow,
-                child: const Center(child: Text('Escaped Container')),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
