@@ -1,24 +1,54 @@
-import 'package:escape_parent_padding/escaped.dart';
 import 'package:flutter/widgets.dart';
+import 'package:escape_parent_padding/escaped.dart';
 
-/// A widget that allows its child or children to escape the constraints of a parent padding.
+/// A widget that allows its child or children to escape the constraints of a parent's padding.
 ///
-/// ## Constructors:
+/// This widget provides two modes:
 ///
-/// ### `EscapablePadding`
-/// - `padding`: The padding to apply around each child.
-/// - `children`: A list of widgets to display. If a child is of type `Escaped`, it will bypass the padding.
-/// - `builder`: A function that takes the `BuildContext` and the list of wrapped children, and returns a widget.
+/// ### Default Constructor:
+/// - Used for multiple children.
+/// - Applies padding around each child unless it is wrapped in an [Escaped] widget.
+/// - Requires `padding`, `children`, and a `builder`.
 ///
-/// ### `EscapablePadding.lite`
-/// - `height`: The height of the widget.
-/// - `child`: A single widget to display that overflows the parent padding.
+/// ### Lite Constructor:
+/// - Used for a single child to escape horizontal constraints.
+/// - Requires `height` and `child`.
 ///
-/// ## Behavior:
-/// - The default constructor wraps children in padding unless they are `Escaped`.
-/// - The `lite` constructor allows a single child to escape parent constraints using `OverflowBox`.
+/// ## Example
+///
+/// ### Default Usage:
+/// ```dart
+/// EscapablePadding(
+///   padding: const EdgeInsets.all(16),
+///   children: [
+///     const Text('Normal padded child'),
+///     Escaped(
+///       child: Container(
+///         color: Colors.red,
+///         child: const Text('No padding here!'),
+///       ),
+///     ),
+///   ],
+///   builder: (context, children) => Column(children: children),
+/// )
+/// ```
+///
+/// ### Lite Usage:
+/// ```dart
+/// Padding(
+///   padding: const EdgeInsets.symmetric(horizontal: 24),
+///   child: EscapablePadding.lite(
+///     height: 100,
+///     child: Container(
+///       width: 500,
+///       color: Colors.blue,
+///       child: const Text('Escaping horizontal padding!'),
+///     ),
+///   ),
+/// )
+/// ```
 class EscapablePadding extends StatelessWidget {
-  /// Padding to be applied around each non-escaped child.
+  /// Padding to apply around each child in default mode.
   final EdgeInsets? padding;
 
   /// List of children. Required in default constructor.
@@ -62,7 +92,6 @@ class EscapablePadding extends StatelessWidget {
           children: [
             Expanded(
               child: OverflowBox(
-                // Child can overflow horizontally, e.g. inside a horizontally padded parent
                 maxWidth: MediaQuery.of(context).size.width,
                 child: child!,
               ),
@@ -72,7 +101,7 @@ class EscapablePadding extends StatelessWidget {
       );
     }
 
-    // --- Default version with children ---
+    // --- Default version ---
     assert(
       padding != null && children != null && builder != null,
       'When using default constructor, padding, children, and builder must be provided.',
@@ -80,10 +109,7 @@ class EscapablePadding extends StatelessWidget {
 
     final wrappedChildren =
         children!.map((child) {
-          // Escape padding if wrapped in Escaped widget
           if (child is Escaped) return child.child;
-
-          // Wrap non-escaped child with padding
           return Padding(padding: padding!, child: child);
         }).toList();
 
