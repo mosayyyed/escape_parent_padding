@@ -1,6 +1,5 @@
 ## 1.0.4
 
-- Fixed README display issues on pub.dev by replacing HTML tables with Markdown syntax.
 - Added side-by-side demo GIFs using Markdown for better compatibility with pub.dev.
 - Improved visual documentation to clearly show before/after usage of `EscapablePadding`.
 
