@@ -3,7 +3,7 @@ description: "A lightweight Flutter widget that allows child widgets to visually
   Useful for layouts like full-width horizontal ListViews inside padded parents."
 
 version: 0.0.1
-homepage: https://github.com/username/escape_parent_padding
+homepage: https://github.com/mosayyyed/escape_parent_padding
 
 environment:
   sdk: ^3.7.0
