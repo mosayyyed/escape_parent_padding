@@ -2,7 +2,7 @@ name: escape_parent_padding
 description: A Flutter widget to let child widgets escape parent padding constraints, great for full-width layouts like horizontal ListViews.
 
 
-version: 1.0.3
+version: 1.0.4
 homepage: https://github.com/mosayyyed/escape_parent_padding
 
 environment:
