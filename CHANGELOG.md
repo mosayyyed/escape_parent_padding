@@ -1,3 +1,8 @@
+## 1.0.3
+- Added better support for GIF demos in README.
+- Improved layout for demo images to prevent large rendering on pub.dev.
+- Updated documentation for better clarity on usage.
+
 ## 1.0.0
 
 - Improved documentation and README layout.
