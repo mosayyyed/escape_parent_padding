@@ -4,8 +4,19 @@ A lightweight Flutter widget that allows child widgets to visually escape the pa
 
 ## 🎥 Demo
 
-- ▶️ [Before using EscapablePadding](example/screenshots/escapable_padding_before.webm)
-- ✅ [After using EscapablePadding](example/screenshots/escapable_padding_after.webm)
+### Before EscapablePadding
+
+<video width="600" controls>
+  <source src="example/screenshots/escapable_padding_before.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+
+### After EscapablePadding
+
+<video width="600" controls>
+  <source src="example/screenshots/escapable_padding_after.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
 
 ## ✨ Features
 
