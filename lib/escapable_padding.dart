@@ -1,10 +1,10 @@
+import 'package:escape_parent_padding/escaped.dart';
 import 'package:flutter/widgets.dart';
-import 'package:escape_parent_padding/src/escaped.dart';
 
 /// A widget that allows its child or children to escape the constraints of a parent padding.
 ///
 /// ## Constructors:
-/// 
+///
 /// ### `EscapablePadding`
 /// - `padding`: The padding to apply around each child.
 /// - `children`: A list of widgets to display. If a child is of type `Escaped`, it will bypass the padding.
@@ -39,17 +39,17 @@ class EscapablePadding extends StatelessWidget {
     required this.padding,
     required this.children,
     required this.builder,
-  })  : height = null,
-        child = null;
+  }) : height = null,
+       child = null;
 
   /// Lite constructor for single child that escapes horizontal constraints.
   const EscapablePadding.lite({
     super.key,
     required this.height,
     required this.child,
-  })  : padding = null,
-        children = null,
-        builder = null;
+  }) : padding = null,
+       children = null,
+       builder = null;
 
   @override
   Widget build(BuildContext context) {
@@ -73,19 +73,19 @@ class EscapablePadding extends StatelessWidget {
     }
 
     // --- Default version with children ---
-    assert(padding != null && children != null && builder != null,
-        'When using default constructor, padding, children, and builder must be provided.');
+    assert(
+      padding != null && children != null && builder != null,
+      'When using default constructor, padding, children, and builder must be provided.',
+    );
 
-    final wrappedChildren = children!.map((child) {
-      // Escape padding if wrapped in Escaped widget
-      if (child is Escaped) return child.child;
+    final wrappedChildren =
+        children!.map((child) {
+          // Escape padding if wrapped in Escaped widget
+          if (child is Escaped) return child.child;
 
-      // Wrap non-escaped child with padding
-      return Padding(
-        padding: padding!,
-        child: child,
-      );
-    }).toList();
+          // Wrap non-escaped child with padding
+          return Padding(padding: padding!, child: child);
+        }).toList();
 
     return builder!(context, wrappedChildren);
   }
