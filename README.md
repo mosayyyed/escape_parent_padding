@@ -2,11 +2,21 @@
 
 A lightweight Flutter widget that allows child widgets to visually escape the padding applied by a parent widget. Useful when you want specific widgets (like a horizontally scrolling `ListView`) to ignore parent padding and span the full screen width.
 
-## 🎥 Demo
+<table>
+  <tr>
+    <td align="center"><b>Before</b></td>
+    <td align="center"><b>After</b></td>
+  </tr>
+  <tr>
+    <td>
+      <img src="example/screenshots/escapable_padding_before.gif" width="300">
+    </td>
+    <td>
+      <img src="example/screenshots/escapable_padding_after.gif" width="300">
+    </td>
+  </tr>
+</table>
 
-| Before EscapablePadding | After EscapablePadding |
-|--------------------------|-------------------------|
-| <img src="example/screenshots/escapable_padding_before.gif" width="300"/> | <img src="example/screenshots/escapable_padding_after.gif" width="300"/> |
 
 ## ✨ Features
 
@@ -23,7 +33,7 @@ In your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  escape_parent_padding: ^1.0.2
+  escape_parent_padding: ^1.0.3
 ```
 
 Then run:
