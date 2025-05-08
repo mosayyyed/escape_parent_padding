@@ -4,9 +4,16 @@ A lightweight Flutter widget that allows child widgets to visually escape the pa
 
 ## 🎥 Demo
 
-| Before EscapablePadding | After EscapablePadding |
-|-------------------------|------------------------|
-| <img src="example/screenshots/escapable_padding_before.gif" width="300"/> | <img src="example/screenshots/escapable_padding_after.gif" width="300"/> |
+<div style="display: flex; gap: 16px; align-items: flex-start;">
+  <div style="flex: 1;">
+    <h4>Before EscapablePadding</h4>
+    <img src="example/screenshots/escapable_padding_before.gif" width="100%" />
+  </div>
+  <div style="flex: 1;">
+    <h4>After EscapablePadding</h4>
+    <img src="example/screenshots/escapable_padding_after.gif" width="100%" />
+  </div>
+</div>
 
 ## ✨ Features
 
@@ -23,7 +30,7 @@ In your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  escape_parent_padding: ^0.0.3
+  escape_parent_padding: ^1.0.1
 ```
 
 Then run:
